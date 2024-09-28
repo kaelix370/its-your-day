@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Love Letter for Adeena</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffecd1;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .envelope {
+            width: 400px;
+            height: 300px;
+            background: #ffe0e0;
+            position: relative;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease;
+        }
+
+        .envelope:hover {
+            transform: scale(1.05);
+        }
+
+        .envelope:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: #ff9aa2;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .heart-stamp {
+            position: absolute;
+            top: 110px;
+            left: 150px;
+            width: 100px;
+            height: 100px;
+            background: red;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .heart-stamp:hover {
+            transform: scale(1.2);
+        }
+
+        .crumpled-ball {
+            display: none;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: #f5f5f5;
+            border-radius: 50%;
+            animation: shake 0.5s ease infinite;
+            cursor: pointer;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        .letter {
+            display: none;
+            position: absolute;
+            width: 320px;
+            height: 220px;
+            background-color: white;
+            color: black;
+            border-radius: 5px;
+            padding: 20px;
+            font-size: 18px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transform-origin: top left;
+            animation: unfold 1s ease forwards;
+        }
+
+        @keyframes unfold {
+            0% {
+                transform: scale(0) rotate(45deg);
+            }
+            100% {
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        .balloons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-200px); }
+            100% { transform: translateY(0); }
+        }
+
+        .balloon:nth-child(1) {
+            left: 10%;
+            animation-duration: 6s;
+        }
+
+        .balloon:nth-child(2) {
+            left: 30%;
+            animation-duration: 7s;
+        }
+
+        .balloon:nth-child(3) {
+            left: 50%;
+            animation-duration: 9s;
+        }
+
+        .balloon:nth-child(4) {
+            left: 70%;
+            animation-duration: 8s;
+        }
+
+        .balloon:nth-child(5) {
+            left: 90%;
+            animation-duration: 10s;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .confetti span {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff9aa2;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: drop 5s ease-in-out infinite;
+        }
+
+        @keyframes drop {
+            0% { transform: translateY(-100px); opacity: 0.5; }
+            100% { transform: translateY(100vh); opacity: 1; }
+        }
+
+        .confetti span:nth-child(odd) {
+            background-color: #ffd1dc;
+        }
+
+        .confetti span:nth-child(even) {
+            background-color: #ffb6c1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="balloons">
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+    </div>
+
+    <div class="confetti">
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="envelope" onclick="openEnvelope()">
+        <div class="heart-stamp">❤️</div>
+    </div>
+
+    <div class="crumpled-ball" onclick="unfoldLetter()">🗒️</div>
+
+    <div class="letter">
+        <h2>To My Dearest Adeena,</h2>
+        <p>MyLove, myLady, myHeart,</p>
+        <p>
+            I want to wish you the happiest of birthdays, my queen. You are the light in my life, the dream I never want to wake up from. Your beauty, your spirit, your soul—every part of you makes my heart skip a beat. Today is your day, and I hope it is as radiant as you are.
+        </p>
+        <p>
+            I can’t wait to celebrate you, to cherish you, and to remind you how deeply I love you. You are my everything, and my love for you will only grow stronger as the days go by.
+        </p>
+        <p>Forever yours,<br>Krishna</p>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            document.querySelector('.heart-stamp').style.display = 'none';
+            document.querySelector('.crumpled-ball').style.display = 'block';
+        }
+
+        function unfoldLetter() {
+            document.querySelector('.crumpled-ball').style.display = 'none';
+            document.querySelector('.letter').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
